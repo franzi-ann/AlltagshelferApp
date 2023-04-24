@@ -116,7 +116,10 @@ class _Home extends State<Home> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, "/markets");
+                        Navigator.pushNamed(
+                          context,
+                          "/markets",
+                        );
                       },
                     ),
                     GestureDetector(
@@ -137,7 +140,10 @@ class _Home extends State<Home> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, "/farms");
+                        Navigator.pushNamed(
+                          context,
+                          "/farms",
+                        );
                       },
                     ),
                     GestureDetector(
@@ -148,16 +154,21 @@ class _Home extends State<Home> {
                           mainAxisSize: MainAxisSize.min,
                           children: const [
                             Icon(
-                              Icons.train,
+                              Icons.food_bank,
                               size: 50,
                             ),
                             Text(
-                              "Mobilität",
+                              "Ernährung & Lifestyle",
                             ),
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          "/lifestyle",
+                        );
+                      },
                     ),
                     GestureDetector(
                       child: Card(
@@ -205,11 +216,11 @@ class _Home extends State<Home> {
                           mainAxisSize: MainAxisSize.min,
                           children: const [
                             Icon(
-                              Icons.food_bank,
+                              Icons.train,
                               size: 50,
                             ),
                             Text(
-                              "Ernährung & Lifestyle",
+                              "Mobilität",
                             ),
                           ],
                         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sustain/home.dart';
+import 'package:sustain/lifestyle/fashion_labels.dart';
+import 'package:sustain/lifestyle/lifestyle_links.dart';
 import 'package:sustain/localization_map.dart';
 
 void main() {
@@ -14,11 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
+    
       initialRoute: "/home",
       routes: {
         "/home": (ctx) => const Home(),
         "/markets": (ctx) => const LocationMap(1),
         "/farms": (ctx) => const LocationMap(2),
+        "/fashion_links": (ctx) => const FashionLabels(),
+        "/lifestyle":(context) => const LifeStyleLinks(),
       },
       home: const Home(),
     );
