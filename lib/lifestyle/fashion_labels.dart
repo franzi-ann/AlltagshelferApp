@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FashionLabels extends StatefulWidget {
   const FashionLabels({super.key});
@@ -23,6 +24,7 @@ class _FashionLabels extends State<FashionLabels> {
         description: "tolle & faire Produkte ",
         logo:
             "https://media1.congstar-media.de/fileadmin/files_congstar/cmp/congstar-logo.png",
+        homepage: Uri.dataFromString("https://www.congstar.de"),
       ),
     );
     _list.add(
@@ -30,6 +32,7 @@ class _FashionLabels extends State<FashionLabels> {
         name: "Test",
         description: "Test",
         logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.dataFromString("https://www.mocken.org"),
       ),
     );
     _list.add(
@@ -37,6 +40,7 @@ class _FashionLabels extends State<FashionLabels> {
         name: "Tui",
         description: "toll",
         logo: "https://www.design.tui/_assets/tuismile-tile-blue.svg",
+        homepage: Uri.dataFromString("https://www.congstar.de"),
       ),
     );
   }
@@ -79,6 +83,15 @@ class _FashionLabels extends State<FashionLabels> {
                 subtitle: Text(
                   _list[index].description,
                 ),
+                onTap: () {
+                  canLaunchUrl(_list[index].homepage).then((bool result) {
+                    if (result) {
+                      launchUrl(
+                        _list[index].homepage,
+                      );
+                    }
+                  });
+                },
               ),
             );
           },
@@ -92,10 +105,12 @@ class Label {
   final String name;
   final String logo;
   final String description;
+  final Uri homepage;
 
   Label({
     required this.name,
     required this.description,
     required this.logo,
+    required this.homepage,
   });
 }
