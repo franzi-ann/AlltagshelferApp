@@ -24,7 +24,7 @@ class _FashionLabels extends State<FashionLabels> {
         description: "tolle & faire Produkte ",
         logo:
             "https://media1.congstar-media.de/fileadmin/files_congstar/cmp/congstar-logo.png",
-        homepage: Uri.dataFromString("https://www.congstar.de"),
+        homepage: Uri.parse("https://www.congstar.de"),
       ),
     );
     _list.add(
@@ -32,7 +32,7 @@ class _FashionLabels extends State<FashionLabels> {
         name: "Test",
         description: "Test",
         logo: "https://www.mocken.org/icons/Icon-192.png",
-        homepage: Uri.dataFromString("https://www.mocken.org"),
+        homepage: Uri.parse("https://www.mocken.org"),
       ),
     );
     _list.add(
@@ -40,7 +40,7 @@ class _FashionLabels extends State<FashionLabels> {
         name: "Tui",
         description: "toll",
         logo: "https://www.design.tui/_assets/tuismile-tile-blue.svg",
-        homepage: Uri.dataFromString("https://www.congstar.de"),
+        homepage: Uri.parse("https://www.congstar.de"),
       ),
     );
   }
@@ -62,37 +62,33 @@ class _FashionLabels extends State<FashionLabels> {
             return Card(
               elevation: 10.0,
               child: ListTile(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      10,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        10,
+                      ),
                     ),
                   ),
-                ),
-                leading: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: _list[index].logo,
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.cover,
+                  leading: ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: _list[index].logo,
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                title: Text(
-                  _list[index].name,
-                ),
-                subtitle: Text(
-                  _list[index].description,
-                ),
-                onTap: () {
-                  canLaunchUrl(_list[index].homepage).then((bool result) {
-                    if (result) {
-                      launchUrl(
-                        _list[index].homepage,
-                      );
-                    }
-                  });
-                },
-              ),
+                  title: Text(
+                    _list[index].name,
+                  ),
+                  subtitle: Text(
+                    _list[index].description,
+                  ),
+                  onTap: () {
+                    launchUrl(
+                      mode: LaunchMode.platformDefault,
+                      _list[index].homepage,
+                    );
+                  }),
             );
           },
         ),

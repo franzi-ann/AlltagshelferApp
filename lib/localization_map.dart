@@ -4,6 +4,7 @@ import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:sustain/http_utils/fetch_data.dart';
 import 'package:sustain/places/place.dart';
 import 'package:sustain/utils/app_dialog.dart';
+import 'dart:io' show Platform;
 
 class LocationMap extends StatefulWidget {
   final int _type;
@@ -27,9 +28,18 @@ class _LocationMap extends State<LocationMap> {
         latitude: place.lat,
         longitude: place.lng,
       ),
-      markerIcon: const MarkerIcon(
-        iconWidget: Icon(Icons.location_pin),
-      ),
+      markerIcon: Platform.isIOS
+          ? const MarkerIcon(
+              iconWidget: Icon(
+                Icons.location_pin,
+              ),
+            )
+          : const MarkerIcon(
+              iconWidget: Icon(
+                Icons.location_pin,
+                size: 100,
+              ),
+            ),
     );
   }
 
@@ -76,7 +86,7 @@ class _LocationMap extends State<LocationMap> {
             minZoomLevel: 2,
             showZoomController: true,
             stepZoom: 1,
-            showDefaultInfoWindow: true,
+            showDefaultInfoWindow: false,
             mapIsLoading: const CupertinoActivityIndicator(),
             onMapIsReady: (p0) {
               _getPlaces();
