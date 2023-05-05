@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LifeStyleLinks extends StatelessWidget {
-  const LifeStyleLinks({super.key});
+class Regionals extends StatelessWidget {
+  const Regionals({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class LifeStyleLinks extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
-          "Lifestyle & Ernährung",
+          "Regionales",
         ),
         centerTitle: true,
       ),
@@ -42,7 +42,7 @@ class LifeStyleLinks extends StatelessWidget {
                               size: 50,
                             ),
                             Text(
-                              "Nachhaltige Modelabels",
+                              "Wochenmärkte",
                             ),
                           ],
                         ),
@@ -50,7 +50,7 @@ class LifeStyleLinks extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          "/fashion_links",
+                          "/markets",
                         );
                       },
                     ),
@@ -66,7 +66,7 @@ class LifeStyleLinks extends StatelessWidget {
                               size: 50,
                             ),
                             Text(
-                              "Alternativprodukte",
+                              "Hofläden",
                             ),
                           ],
                         ),
@@ -74,47 +74,9 @@ class LifeStyleLinks extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          "/alternate",
+                          "/farms",
                         );
                       },
-                    ),
-                    GestureDetector(
-                      child: Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(
-                              Icons.train,
-                              size: 50,
-                            ),
-                            Text(
-                              "Resteverwertung",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    GestureDetector(
-                      child: Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(
-                              Icons.light,
-                              size: 50,
-                            ),
-                            Text(
-                              "Think vegan",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {},
                     ),
                   ],
                 ),

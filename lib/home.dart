@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:location/location.dart';
+import 'package:sustain/utils/app_dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -110,7 +112,7 @@ class _Home extends State<Home> {
                               size: 50,
                             ),
                             Text(
-                              "Wochenmärkte",
+                              "Regionales",
                             ),
                           ],
                         ),
@@ -118,7 +120,7 @@ class _Home extends State<Home> {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          "/markets",
+                          "/regionals",
                         );
                       },
                     ),
@@ -130,21 +132,16 @@ class _Home extends State<Home> {
                           mainAxisSize: MainAxisSize.min,
                           children: const [
                             Icon(
-                              Icons.shopping_cart,
+                              Icons.people,
                               size: 50,
                             ),
                             Text(
-                              "Hofläden",
+                              "Community",
                             ),
                           ],
                         ),
                       ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/farms",
-                        );
-                      },
+                      onTap: () {},
                     ),
                     GestureDetector(
                       child: Card(
@@ -206,7 +203,10 @@ class _Home extends State<Home> {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        AppDialog(content: _getTipp(), buildContext: context)
+                            .showAppDialog();
+                      },
                     ),
                     GestureDetector(
                       child: Card(
@@ -234,6 +234,88 @@ class _Home extends State<Home> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _getTipp() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text(
+          "Diese Woche stellen wir euch ein paar schöne Apps vor:",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          "Toogoodtogo: Lebensmittel retten in deiner Umgebung.  Vielleicht ist auch in deiner Umgebung was dabei: ",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        IconButton(
+          onPressed: () {
+            launchUrl(
+              mode: LaunchMode.platformDefault,
+              Uri.parse("https://toogoodtogo.org/en"),
+            );
+          },
+          icon: const Icon(
+            Icons.get_app,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          "Mit der App GrünZeit einfach und überall herausfinden, wann klimafreundliches, heimisches Gemüse Saison hat",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        IconButton(
+          icon: const Icon(
+            Icons.get_app,
+          ),
+          onPressed: () {
+            launchUrl(
+              mode: LaunchMode.platformDefault,
+              Uri.parse(
+                  "https://apps.apple.com/de/app/gr%C3%BCnzeit/id1188737687"),
+            );
+          },
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          "Lebensmittel direkt beim Erzeuger kaufen.",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        IconButton(
+          icon: const Icon(
+            Icons.get_app,
+          ),
+          onPressed: () {
+            launchUrl(
+              mode: LaunchMode.platformDefault,
+              Uri.parse("https://www.crowdfarming.com/de"),
+            );
+          },
+        ),
+      ],
     );
   }
 }

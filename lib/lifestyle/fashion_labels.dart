@@ -18,29 +18,62 @@ class _FashionLabels extends State<FashionLabels> {
   @override
   void initState() {
     super.initState();
+
+    _list.add(
+      Label(
+        name: "Avocado Store",
+        description: "Made in Germany, vegan, biologische Rohstoffe",
+        logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.parse(
+          "https://www.avocadostore.de",
+        ),
+      ),
+    );
+
+    _list.add(
+      Label(
+        name: "Rock on and Namaste",
+        description: "Bio, fair und vegan",
+        logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.parse(
+          "https://rockonandnamaste.com",
+        ),
+      ),
+    );
     _list.add(
       Label(
         name: "Armed Angels",
-        description: "tolle & faire Produkte ",
-        logo:
-            "https://media1.congstar-media.de/fileadmin/files_congstar/cmp/congstar-logo.png",
-        homepage: Uri.parse("https://www.congstar.de"),
-      ),
-    );
-    _list.add(
-      Label(
-        name: "Test",
-        description: "Test",
+        description: "Bio Baumwolle, Second Hand",
         logo: "https://www.mocken.org/icons/Icon-192.png",
-        homepage: Uri.parse("https://www.mocken.org"),
+        homepage: Uri.parse(
+          "https://www.armedangels.com/de-de",
+        ),
       ),
     );
     _list.add(
       Label(
-        name: "Tui",
-        description: "toll",
-        logo: "https://www.design.tui/_assets/tuismile-tile-blue.svg",
-        homepage: Uri.parse("https://www.congstar.de"),
+        name: "Ragwear",
+        description: "Streetwear, vegan, nachhaltige Materialien",
+        logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.parse(
+          "https://www.ragwear.com/de/",
+        ),
+      ),
+    );
+    _list.add(
+      Label(
+        name: "Veganliebe",
+        description: "fair, vegan, Lifestyle und Ernährung",
+        logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.parse("https://veganliebe.de"),
+      ),
+    );
+    _list.add(
+      Label(
+        name: "Vinted",
+        description: "2nd Hand - Geld sparen inklusive ",
+        logo: "https://www.mocken.org/icons/Icon-192.png",
+        homepage: Uri.parse("https://www.vinted.de"),
       ),
     );
   }
