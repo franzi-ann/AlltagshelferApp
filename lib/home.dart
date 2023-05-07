@@ -141,7 +141,12 @@ class _Home extends State<Home> {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          "/community",
+                        );
+                      },
                     ),
                     GestureDetector(
                       child: Card(

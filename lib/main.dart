@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sustain/community/community_chat.dart';
 import 'package:sustain/home.dart';
 import 'package:sustain/lifestyle/alternate_products.dart';
 import 'package:sustain/lifestyle/fashion_labels.dart';
@@ -18,7 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
-    
       initialRoute: "/home",
       routes: {
         "/home": (ctx) => const Home(),
@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
         "/markets": (ctx) => const LocationMap(1),
         "/farms": (ctx) => const LocationMap(2),
         "/fashion_links": (ctx) => const FashionLabels(),
-        "/lifestyle":(context) => const LifeStyleLinks(),
-        "/alternate":(context) => const AlternateProducts(),
+        "/lifestyle": (context) => const LifeStyleLinks(),
+        "/alternate": (context) => const AlternateProducts(),
+        "/community": (context) => const CommunityChat(),
       },
       home: const Home(),
     );
