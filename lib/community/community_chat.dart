@@ -14,7 +14,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 class CommunityChat extends StatefulWidget {
-  const CommunityChat({super.key});
+  final String title;
+  const CommunityChat({
+    super.key,
+    required this.title,
+  });
 
   @override
   State<CommunityChat> createState() => _CommunityChat();
@@ -38,8 +42,8 @@ class _CommunityChat extends State<CommunityChat> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text(
-          "Community",
+        title: Text(
+          widget.title,
         ),
       ),
       body: Chat(
