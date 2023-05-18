@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sustain/community/community.dart';
+import 'package:sustain/energy/save_energy.dart';
 import 'package:sustain/home.dart';
 import 'package:sustain/lifestyle/alternate_products.dart';
 import 'package:sustain/lifestyle/fashion_labels.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         "/lifestyle": (context) => const LifeStyleLinks(),
         "/alternate": (context) => const AlternateProducts(),
         "/community": (context) => const Community(),
+        "/energy": (context) => const SaveEnergy(),
       },
       home: const Home(),
     );

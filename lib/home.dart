@@ -101,12 +101,12 @@ class _Home extends State<Home> {
                   mainAxisSpacing: 2.0,
                   children: [
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.warehouse,
                               size: 50,
@@ -125,12 +125,12 @@ class _Home extends State<Home> {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.people,
                               size: 50,
@@ -149,12 +149,12 @@ class _Home extends State<Home> {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.food_bank,
                               size: 50,
@@ -173,12 +173,12 @@ class _Home extends State<Home> {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.light,
                               size: 50,
@@ -189,15 +189,20 @@ class _Home extends State<Home> {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          "/energy",
+                        );
+                      },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.tips_and_updates,
                               size: 50,
@@ -214,12 +219,12 @@ class _Home extends State<Home> {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.train,
                               size: 50,
