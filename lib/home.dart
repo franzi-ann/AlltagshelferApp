@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:location/location.dart';
+import 'package:sustain/login_page/login_page.dart';
 import 'package:sustain/utils/app_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -52,194 +53,196 @@ class _Home extends State<Home> {
           10,
         ),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+          child: Stack(
             children: [
-              FlutterCarousel(
-                options: CarouselOptions(
-                  height: 120.0,
-                  showIndicator: true,
-                  slideIndicator: const CircularSlideIndicator(),
-                ),
-                items: [
-                  "Wenn an vielen kleinen Orten",
-                  "viele kleine Menschen",
-                  "viele kleine Dinge tun",
-                  "wird sich das Angesicht unserer Erde verändern.",
-                  "Wenn an vielen kleinen Orten viele kleine Menschen viele kleine Dinge tun wird sich das Angesicht unserer Erde verändern.",
-                ].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return SizedBox(
-                        child: Center(
-                          child: Text(
-                            ' $i',
-                            softWrap: true,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FlutterCarousel(
+                    options: CarouselOptions(
+                      height: 120.0,
+                      showIndicator: true,
+                      slideIndicator: const CircularSlideIndicator(),
+                    ),
+                    items: [
+                      "Wenn an vielen kleinen Orten",
+                      "viele kleine Menschen",
+                      "viele kleine Dinge tun",
+                      "wird sich das Angesicht unserer Erde verändern.",
+                      "Wenn an vielen kleinen Orten viele kleine Menschen viele kleine Dinge tun wird sich das Angesicht unserer Erde verändern.",
+                    ].map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            child: Center(
+                              child: Text(
+                                ' $i',
+                                softWrap: true,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: GridView.count(
+                      primary: false,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 2.0,
+                      mainAxisSpacing: 2.0,
+                      children: [
+                        GestureDetector(
+                          child: const Card(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.warehouse,
+                                  size: 50,
+                                ),
+                                Text(
+                                  "Regionales",
+                                ),
+                              ],
                             ),
                           ),
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              "/regionals",
+                            );
+                          },
                         ),
-                      );
-                    },
-                  );
-                }).toList(),
+                        GestureDetector(
+                          child: const Card(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.people,
+                                  size: 50,
+                                ),
+                                Text(
+                                  "Community",
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              "/community",
+                            );
+                          },
+                        ),
+                        GestureDetector(
+                          child: const Card(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.food_bank,
+                                  size: 50,
+                                ),
+                                Text(
+                                  "Ernährung & Lifestyle",
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              "/lifestyle",
+                            );
+                          },
+                        ),
+                        GestureDetector(
+                          child: const Card(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.light,
+                                  size: 50,
+                                ),
+                                Text(
+                                  "Energie sparen",
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              "/energy",
+                            );
+                          },
+                        ),
+                        GestureDetector(
+                          child: const Card(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.tips_and_updates,
+                                  size: 50,
+                                ),
+                                Text(
+                                  "Tipp der Woche",
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            AppDialog(
+                                    content: _getTipp(), buildContext: context)
+                                .showAppDialog();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: GridView.count(
-                  primary: false,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 2.0,
-                  mainAxisSpacing: 2.0,
-                  children: [
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.warehouse,
-                              size: 50,
-                            ),
-                            Text(
-                              "Regionales",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/regionals",
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.people,
-                              size: 50,
-                            ),
-                            Text(
-                              "Community",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/community",
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.food_bank,
-                              size: 50,
-                            ),
-                            Text(
-                              "Ernährung & Lifestyle",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/lifestyle",
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.light,
-                              size: 50,
-                            ),
-                            Text(
-                              "Energie sparen",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/energy",
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.tips_and_updates,
-                              size: 50,
-                            ),
-                            Text(
-                              "Tipp der Woche",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        AppDialog(content: _getTipp(), buildContext: context)
-                            .showAppDialog();
-                      },
-                    ),
-                    GestureDetector(
-                      child: const Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.train,
-                              size: 50,
-                            ),
-                            Text(
-                              "Mobilität",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                  ],
+              Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  onPressed: () {
+                    AppDialog(
+                      content: const LoginPage(),
+                      buildContext: context,
+                      showActions: false,
+                    ).showAppDialog();
+                  },
+                  icon: const Icon(
+                    Icons.account_circle,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

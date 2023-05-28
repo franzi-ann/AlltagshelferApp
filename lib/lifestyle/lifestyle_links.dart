@@ -31,12 +31,12 @@ class LifeStyleLinks extends StatelessWidget {
                   mainAxisSpacing: 2.0,
                   children: [
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.warehouse,
                               size: 50,
@@ -55,12 +55,12 @@ class LifeStyleLinks extends StatelessWidget {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.shopping_cart,
                               size: 50,
@@ -79,31 +79,12 @@ class LifeStyleLinks extends StatelessWidget {
                       },
                     ),
                     GestureDetector(
-                      child: Card(
+                      child: const Card(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(
-                              Icons.train,
-                              size: 50,
-                            ),
-                            Text(
-                              "Resteverwertung",
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    GestureDetector(
-                      child: Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.light,
                               size: 50,
@@ -114,7 +95,12 @@ class LifeStyleLinks extends StatelessWidget {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          "/think_vegan",
+                        );
+                      },
                     ),
                   ],
                 ),

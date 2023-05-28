@@ -5,6 +5,7 @@ import 'package:sustain/home.dart';
 import 'package:sustain/lifestyle/alternate_products.dart';
 import 'package:sustain/lifestyle/fashion_labels.dart';
 import 'package:sustain/lifestyle/lifestyle_links.dart';
+import 'package:sustain/lifestyle/think_vegan.dart';
 import 'package:sustain/localization_map.dart';
 import 'package:sustain/places/regionals.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         "/alternate": (context) => const AlternateProducts(),
         "/community": (context) => const Community(),
         "/energy": (context) => const SaveEnergy(),
+        "/think_vegan": (context) => const ThinkVegan(),
       },
       home: const Home(),
     );
