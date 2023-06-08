@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:location/location.dart';
 import 'package:sustain/login_page/login_page.dart';
+import 'package:sustain/user/user.dart';
 import 'package:sustain/utils/app_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -127,29 +128,34 @@ class _Home extends State<Home> {
                             );
                           },
                         ),
-                        GestureDetector(
-                          child: const Card(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.people,
-                                  size: 50,
-                                ),
-                                Text(
-                                  "Community",
-                                ),
-                              ],
+                        Opacity(
+                          opacity: User.isLoggedIn() ? 1 : 0.25,
+                          child: GestureDetector(
+                            child: const Card(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.people,
+                                    size: 50,
+                                  ),
+                                  Text(
+                                    "Community",
+                                  ),
+                                ],
+                              ),
                             ),
+                            onTap: () {
+                              if (User.isLoggedIn()) {
+                                Navigator.pushNamed(
+                                  context,
+                                  "/community",
+                                );
+                              }
+                            },
                           ),
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              "/community",
-                            );
-                          },
                         ),
                         GestureDetector(
                           child: const Card(
@@ -233,10 +239,13 @@ class _Home extends State<Home> {
                 child: IconButton(
                   onPressed: () {
                     AppDialog(
-                      content: const LoginPage(),
+                      content: LoginPage(callback: () {
+                        setState(() {});
+                      }),
                       buildContext: context,
                       showActions: false,
                     ).showAppDialog();
+                    setState(() {});
                   },
                   icon: const Icon(
                     Icons.account_circle,

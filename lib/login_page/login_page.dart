@@ -1,13 +1,15 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sustain/http_utils/http_userlogin.dart';
+import 'package:sustain/user/user.dart';
 import 'package:sustain/utils/themed_cupertino_widgets.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final Function callback;
+  const LoginPage({
+    super.key,
+    required this.callback,
+  });
 
   @override
   State createState() => _LoginPageState();
@@ -49,7 +51,6 @@ class _LoginPageState extends State<LoginPage> {
 
       var map = <String, dynamic>{};
       map["email"] = _email;
-      map["password"] = _password;
       _performLogin(map);
     } else {
       setState(() {
@@ -58,41 +59,11 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void _performLogin(Map map) {
-    Future<HttpUserLoginResponse> response = HttpUserLogin().doLogin(map);
-    response.then((httpUserLogin) {
-      _evaluteLoginResponse(httpUserLogin);
-    });
-  }
-
-  void _evaluteLoginResponse(HttpUserLoginResponse httpUserLogin) {
-    if (httpUserLogin.getStatus() == 200) {
-      loginSuccess(httpUserLogin);
-    } else {
-      if (httpUserLogin.getStatus() == 400 ||
-          httpUserLogin.getStatus() == 401) {
-        Fluttertoast.showToast(
-          msg: "Login fehlerhaft",
-        );
-      } else if (httpUserLogin.getStatus() == 500) {
-        Fluttertoast.showToast(
-          msg: "Serverfehler",
-        );
-      } else {
-        Fluttertoast.showToast(
-          msg: "Keine Verbindung zum Server möglich",
-        );
-      }
-      setState(() {
-        _loginButtonEnabled = true;
-      });
-    }
-  }
-
-  Future<void> loginSuccess(HttpUserLoginResponse httpUserLoginResponse) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("user", httpUserLoginResponse.getJson()!);
-    prefs.setString("token", httpUserLoginResponse.getToken()!);
+  void _performLogin(Map map) async {
+    User.setEmail(map["email"]);
+    User.login();
+    Navigator.pop(context);
+    widget.callback();
   }
 
   @override
